@@ -1,0 +1,14 @@
+base_lr: 0.01
+display: 1
+max_iter: 23850
+lr_policy: "step"
+gamma: 0.1
+momentum: 0.9
+weight_decay: 1e-06
+stepsize: 7871
+snapshot: 5
+snapshot_prefix: "snapshot"
+solver_mode: CPU
+net: "/home/jogue/workspace/ICIPmodels/fuse_train_val.prototxt"
+solver_type: SGD
+test_initialization: false
