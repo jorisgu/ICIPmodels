@@ -6,7 +6,7 @@ layer {
   python_param {
     module: "jg_layers.jg_data"
     layer: "jg_input_segmentation_layer"
-    param_str: "{'images_folder': '/home/jguerry/workspace/datasets/SUNRGBD_pv/data/rgb_i_100_8bits/', 'image_file_extension': 'png', 'segmentations_folder': '/home/jguerry/workspace/datasets/SUNRGBD_pv/data/labels_segmentation_37d/', 'segmentation_file_extension': 'png', 'set_file_path': '/home/jguerry/workspace/datasets/SUNRGBD_pv/data/sets/nyudv2_gupta/testGupta.txt', 'classes_file_path': '/home/jguerry/workspace/datasets/SUNRGBD_pv/37_classes.txt', 'shuffle': False}"
+    param_str: "{'images_folder': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/rgb_i_100_8bits/', 'image_file_extension': 'png', 'segmentations_folder': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/labels_segmentation_37d/', 'segmentation_file_extension': 'png', 'set_file_path': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/sets/nyudv2_gupta/testGupta.txt', 'classes_file_path': '/home/jogue/workspace/datasets/SUNRGBD_pv/37_classes.txt', 'shuffle': False}"
   }
 }
 layer {

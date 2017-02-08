@@ -1,5 +1,5 @@
 layer {
-  name: "jg_input_layer-train"
+  name: "jg_input_layer"
   type: "Python"
   top: "data"
   top: "label"
@@ -10,7 +10,7 @@ layer {
   }
 }
 layer {
-  name: "conv1_1"
+  name: "conv1_1_gray"
   type: "Convolution"
   bottom: "data"
   top: "conv1_1"
