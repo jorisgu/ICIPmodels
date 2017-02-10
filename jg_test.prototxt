@@ -1,16 +1,15 @@
 layer {
-  name: "jg_input_layer"
+  name: "jg_input_layer-train"
   type: "Python"
   top: "data"
-  top: "label"
   python_param {
     module: "jg_layers.jg_data"
-    layer: "jg_input_segmentation_layer"
-    param_str: "{'images_folder': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/d_raw_normal_8Bits/', 'image_file_extension': 'png', 'segmentations_folder': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/labels_segmentation_37d/', 'segmentation_file_extension': 'png', 'set_file_path': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/sets/nyudv2_gupta/testGupta.txt', 'classes_file_path': '/home/jogue/workspace/datasets/SUNRGBD_pv/37_classes.txt', 'shuffle': False}"
+    layer: "jg_input_test_layer"
+    param_str: "{'images_folder': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/rgb_i_100_8bits/', 'image_file_extension': 'png', 'segmentations_folder': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/labels_segmentation_37d/', 'segmentation_file_extension': 'png', 'set_file_path': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/sets/nyudv2_gupta/testGupta.txt', 'classes_file_path': '/home/jogue/workspace/datasets/SUNRGBD_pv/37_classes.txt', 'shuffle': False}"
   }
 }
 layer {
-  name: "conv1_1_gray"
+  name: "conv1_1"
   type: "Convolution"
   bottom: "data"
   top: "conv1_1"
@@ -515,26 +514,5 @@ layer {
   crop_param {
     axis: 2
     offset: 19
-  }
-}
-layer {
-  name: "loss"
-  type: "SoftmaxWithLoss"
-  bottom: "score"
-  bottom: "label"
-  top: "loss"
-  loss_param {
-    ignore_label: 255
-    normalize: true
-  }
-}
-layer {
-  name: "accuracy"
-  type: "Accuracy"
-  bottom: "score"
-  bottom: "label"
-  top: "accuracy"
-  accuracy_param {
-    ignore_label: 255
   }
 }

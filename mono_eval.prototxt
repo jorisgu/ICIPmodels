@@ -1,16 +1,57 @@
 layer {
-  name: "jg_input_layer"
-  type: "Python"
+  name: "data"
+  type: "Data"
   top: "data"
-  top: "label"
-  python_param {
-    module: "jg_layers.jg_data"
-    layer: "jg_input_segmentation_layer"
-    param_str: "{'images_folder': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/d_raw_normal_8Bits/', 'image_file_extension': 'png', 'segmentations_folder': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/labels_segmentation_37d/', 'segmentation_file_extension': 'png', 'set_file_path': '/home/jogue/workspace/datasets/SUNRGBD_pv/data/sets/nyudv2_gupta/testGupta.txt', 'classes_file_path': '/home/jogue/workspace/datasets/SUNRGBD_pv/37_classes.txt', 'shuffle': False}"
+  include {
+    phase: TRAIN
+  }
+  data_param {
+    source: "/home/jogue/soft/digits/digits/jobs/20170206-013938-a8df/train_db/features"
+    batch_size: 1
+    backend: LMDB
   }
 }
 layer {
-  name: "conv1_1_gray"
+  name: "label"
+  type: "Data"
+  top: "label"
+  include {
+    phase: TRAIN
+  }
+  data_param {
+    source: "/home/jogue/soft/digits/digits/jobs/20170206-013938-a8df/train_db/labels"
+    batch_size: 1
+    backend: LMDB
+  }
+}
+layer {
+  name: "data"
+  type: "Data"
+  top: "data"
+  include {
+    phase: TEST
+  }
+  data_param {
+    source: "/home/jogue/soft/digits/digits/jobs/20170206-013938-a8df/val_db/features"
+    batch_size: 1
+    backend: LMDB
+  }
+}
+layer {
+  name: "label"
+  type: "Data"
+  top: "label"
+  include {
+    phase: TEST
+  }
+  data_param {
+    source: "/home/jogue/soft/digits/digits/jobs/20170206-013938-a8df/val_db/labels"
+    batch_size: 1
+    backend: LMDB
+  }
+}
+layer {
+  name: "conv1_1"
   type: "Convolution"
   bottom: "data"
   top: "conv1_1"
@@ -534,6 +575,9 @@ layer {
   bottom: "score"
   bottom: "label"
   top: "accuracy"
+  include {
+    phase: TEST
+  }
   accuracy_param {
     ignore_label: 255
   }
